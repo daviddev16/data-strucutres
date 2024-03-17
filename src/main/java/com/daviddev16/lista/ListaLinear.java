@@ -1,5 +1,7 @@
 package com.daviddev16.lista;
 
+import com.daviddev16.Util;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.StringJoiner;
@@ -127,23 +129,11 @@ public class ListaLinear<T> {
     }
 
     /**
-     * Utilitário para representação textual da lista.
-     * */
-    private String internalToPrettyString(boolean mostrarElementosNulos) {
-        StringJoiner stringJoiner = new StringJoiner(", ");
-        for (Object object : arrayElementos) {
-            if (mostrarElementosNulos || object != null)
-                stringJoiner.add(Objects.toString(object, "?"));
-        }
-        return "ListaLinear=[" + stringJoiner.toString() + "]";
-    }
-
-    /**
      * Retorna o conjunto de elementos da array. Esse conjunto
      * exibe os "slots" que foram preenchidos, apenas.
      * */
     public String toPrettyString() {
-        return internalToPrettyString(false);
+        return Util.internalToPrettyString(false, arrayElementos);
     }
 
     /**
@@ -153,7 +143,7 @@ public class ListaLinear<T> {
      * */
     @Override
     public String toString() {
-        return internalToPrettyString(true);
+        return Util.internalToPrettyString(true, arrayElementos);
     }
 
     /**
